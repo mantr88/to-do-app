@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import { devToolsEnhancer } from '@redux-devtools/extension';
+import { rootReducer } from './reducer';
 
 const initialState = {
   tasks: [
@@ -12,10 +13,6 @@ const initialState = {
   filters: {
     status: 'all',
   },
-};
-
-const rootReducer = (state = initialState, action) => {
-  return state;
 };
 
 // Створюємо розширення стора, щоб додати інструменти розробника
