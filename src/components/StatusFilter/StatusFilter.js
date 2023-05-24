@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // Імпортуємо об'єкт значень фільтра
 import { statusFilters } from 'redux/constants';
 // Імпортуємо генератор екшену
-import { setStatusFilter } from 'redux/actions';
+import { setStatusFilter } from 'redux/filtersSlice';
 
 import { Button } from 'components/Button/Button';
 import css from './StatusFilter.module.css';
