@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchTasks } from './operations';
 // ============Before================================
 // const taskInitialState = [
 //   { id: 0, text: 'Learn HTML and CSS', completed: true },
@@ -59,25 +60,37 @@ const tasksInitialState = {
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState: tasksInitialState,
-  reducers: {
-    // Виконається в момент старту HTTP-запиту
-    fetchingInProgress(state) {
+  extraReducers: {
+    [fetchTasks.pending](state, action) {
       state.isLoading = true;
     },
-    // Виконається якщо HTTP-запит завершився успішно
-    fetchingSuccess(state, action) {
+    [fetchTasks.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     },
-    // Виконається якщо HTTP-запит завершився з помилкою
-    fetchingError(state, action) {
+    [fetchTasks.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
+    // // Виконається в момент старту HTTP-запиту
+    // fetchingInProgress(state) {
+    //   state.isLoading = true;
+    // },
+    // // Виконається якщо HTTP-запит завершився успішно
+    // fetchingSuccess(state, action) {
+    //   state.isLoading = false;
+    //   state.error = null;
+    //   state.items = action.payload;
+    // },
+    // // Виконається якщо HTTP-запит завершився з помилкою
+    // fetchingError(state, action) {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
   },
 });
 
-export const { fetchingInProgress, fetchingSuccess, fetchingError } =
-  tasksSlice.actions;
+// export const { fetchingInProgress, fetchingSuccess, fetchingError } =
+//   tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;
