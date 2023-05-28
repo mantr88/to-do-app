@@ -6,6 +6,7 @@ import { getTasks } from 'redux/selectors';
 export const TaskCounter = () => {
   // Отримуємо масив завдань із стану Redux
   const tasks = useSelector(getTasks);
+  console.log(tasks);
 
   // На базі стану Redux отримуємо похідні дані
   const count = tasks.reduce(
