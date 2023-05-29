@@ -7,8 +7,6 @@ import { Layout } from './Layout/Layout';
 import { TaskList } from './TaskList/TaskList';
 import { getError, getIsLoading } from 'redux/selectors';
 
-// 1. Пофіксити помилку при додаванні задачі;
-// ✅ 2. Скоротити код редюсерів;
 export const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
